@@ -1,0 +1,36 @@
+@font-face{font-family:"Nunito Sans";font-weight:400;font-display:swap;src:url(NunitoSans-Regular.ttf) format("truetype")}
+@font-face{font-family:"Nunito Sans";font-weight:600;font-display:swap;src:url(NunitoSans-SemiBold.ttf) format("truetype")}
+@font-face{font-family:"Nunito Sans";font-weight:700;font-display:swap;src:url(NunitoSans-Bold.ttf) format("truetype")}
+:root{--brand:#11607A;--sand:#E0A458;--bg:#F6FAFC;--surface:#fff;--text:#14262E;--muted:#4D6370;--line:#D5E1E8;--link:#11607A}
+@media (prefers-color-scheme:dark){:root{--brand:#6BB6CF;--bg:#0E1A20;--surface:#15252D;--text:#E8F1F5;--muted:#9FB4BF;--line:#263A44;--link:#7CC3DB}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 "Nunito Sans",system-ui,sans-serif}
+a{color:var(--link)}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1rem}
+header.top{padding:1rem 0}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--text);text-decoration:none}
+.brand img{width:36px;height:36px;border-radius:9px}
+nav a{margin-left:1rem;color:var(--muted);text-decoration:none;font-weight:600}
+nav a:hover{color:var(--link)}
+.hero{padding:4rem 0 3rem}
+.hero img{width:96px;height:96px;border-radius:22px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.1;margin:1rem 0 .75rem;font-weight:700}
+h2{font-size:1.6rem;margin:0 0 1rem;font-weight:700}
+h3{font-size:1.1rem;margin:0 0 .35rem;font-weight:600}
+.lead{font-size:1.25rem;color:var(--muted);max-width:40rem;margin:0 0 1.5rem}
+.badge{display:inline-block;padding:.45rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600}
+.badge b{color:var(--brand)}
+section{padding:2.5rem 0}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem}
+.card p{margin:0;color:var(--muted)}
+.note{color:var(--muted);font-size:.95rem}
+.stores{display:flex;flex-wrap:wrap;gap:.75rem}
+.store{padding:.6rem 1.1rem;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 2.5rem;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+.doc{max-width:44rem;padding:2rem 1rem 3rem}
+.doc h2{margin-top:2rem}
+.todo{background:rgba(224,164,88,.2);border-left:4px solid var(--sand);padding:.6rem .9rem;border-radius:6px;margin:1rem 0}
+:focus-visible{outline:3px solid var(--sand);outline-offset:2px}
