@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><meta name="theme-color" content="#11607A">
 <title>Zásady ochrany soukromí – Travel OS</title>
-<meta name="description" content="Zásady ochrany soukromí aplikace Travel OS (koncept).">
+<meta name="description" content="Jaké údaje aplikace Travel OS zpracovává, kde jsou uložené, komu mohou být dostupné, jak dlouho se uchovávají a jak je smazat.">
 <link rel="icon" href="../favicon.png" type="image/png">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -11,30 +11,111 @@
 <header class="top"><div class="wrap"><a class="brand" href="../"><img src="../assets/icon-192.png" alt="" width="36" height="36">Travel OS</a></div></header>
 <main><div class="doc" style="margin:0 auto">
 <h1>Zásady ochrany soukromí</h1>
-<div class="todo"><strong>Koncept.</strong> Toto není hotová právní verze. Body označené TODO je nutné doplnit před vydáním aplikace.</div>
+<p class="note">Platí pro mobilní aplikaci Travel OS (Android a iOS) a pro tento web. Poslední úprava: 2026-10-04.</p>
+
+<h2>Správce údajů a kontakt</h2>
+<div class="todo"><strong>[DOPLNIT: správce údajů]</strong> Jméno nebo obchodní firma, adresa sídla / bydliště a případně IČO správce údajů.</div>
+<p>Dotazy k ochraně soukromí, žádosti o informace a o smazání údajů: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a>.</p>
+<p>Do e-mailu nepiš heslo ani jiné přihlašovací údaje – nikdy je nepotřebujeme. Žádosti neposílej veřejně (například přes GitHub Issues), prozradily by tvůj e-mail.</p>
+
+<h2>Stručně</h2>
+<ul>
+<li>Aplikace funguje celá <strong>bez účtu</strong>. Bez účtu zůstávají tvoje data jen v telefonu a na server se neodesílají.</li>
+<li><strong>S účtem</strong> se data zálohují na server (služba Supabase) a lze je sdílet mezi zařízeními a s lidmi, které na cestu pozveš.</li>
+<li>V aplikaci není žádná analytická ani reklamní služba. Záznamy o používání a chybách zůstávají v telefonu a odešlou se jen tehdy, když sám sestavíš a odešleš hlášení problému.</li>
+<li>Účet i data na serveru můžeš kdykoli smazat přímo v aplikaci.</li>
+</ul>
+
+<h2>Co se ukládá v tvém zařízení</h2>
+<ul>
+<li>navštívené, plánované a vysněné destinace, města a letiště, cesty a jejich itineráře, lety, checklisty, výdaje, vzpomínky (poznámka, hodnocení, datum) a jejich fotografie,</li>
+<li>ubytování a rezervace, které si do cesty přidáš nebo naimportuješ z potvrzení (tyto údaje se na server <strong>neodesílají</strong>),</li>
+<li>nastavení: jazyk, vzhled, jednotky vzdálenosti, cílová měna,</li>
+<li>stažená tabulka kurzů měn (mezipaměť),</li>
+<li>lokální záznam o používání a chybách (viz „Analytika a diagnostika").</li>
+</ul>
+<p>Aplikace nežádá o oprávnění k poloze ani ke kontaktům. Fotografie a soubory se čtou jen tehdy, když je sám vybereš přes systémový výběr. Zálohu dat do souboru (Nastavení → Data) vytváříš a ukládáš nebo posíláš sám; soubor neobsahuje fotografie.</p>
+
+<h2>Účet</h2>
+<p>Účet je volitelný. Při registraci a přihlášení se zpracovává <strong>e-mailová adresa a heslo</strong>; přihlášení zajišťuje služba Supabase Authentication. Do zařízení se ukládá přihlašovací relace (token), aby ses nemusel(a) přihlašovat při každém spuštění.</p>
+<p>K účtu se ukládá i profil: zobrazované jméno (pokud ho zadáš), preferovaný jazyk, časové pásmo domova a jednotky vzdálenosti.</p>
+
+<h2>Co se po přihlášení ukládá na server</h2>
+<p>Po přihlášení se zařízení zrcadlí na server (Supabase: databáze PostgreSQL s pravidly přístupu na úrovni řádků a úložiště souborů). Synchronizují se:</p>
+<ul>
+<li>profil (viz výše),</li>
+<li>cesty (název, termín, poznámka, seznam destinací) a jejich itineráře,</li>
+<li>navštívené, plánované a vysněné destinace a ty, které jsi odebral(a),</li>
+<li>města a letiště ve tvých seznamech a ta, která jsi odebral(a),</li>
+<li>lety (letiště, datum, vzdálenost),</li>
+<li>položky checklistu a jejich stav,</li>
+<li>výdaje (název, poznámka, částka, měna),</li>
+<li>vzpomínky (poznámka, hodnocení, datum, vazba na cestu nebo destinaci) a jejich fotografie,</li>
+<li>členství ve sdílených cestách, pozvánky a odkazy ke sdílení (viz níže).</li>
+</ul>
+<p>Na server se <strong>neodesílají</strong>: ubytování a importované rezervace, nastavení vzhledu a cílové měny, kurzy měn a lokální záznam o používání a chybách.</p>
+<p>Synchronizace je záloha: zařízení je zdrojem pravdy, server slouží k záloze a ke sdílení. Při prvním přihlášení se data ze zařízení a ze serveru sloučí, abys o svá data nepřišel(a).</p>
+
+<h2>Fotografie ke vzpomínkám</h2>
+<p>Fotografie ke vzpomínce přidáváš sám(sama). V zařízení zůstávají v úložišti aplikace. Pokud jsi přihlášen(a), nahrají se do soukromého úložiště (bucket <code>memories</code>), které <strong>není veřejné</strong>: soubory jsou ve složce označené identifikátorem tvého účtu a číst je smí jen tento účet. Fotografie se nesdílejí s členy sdílených cest. Při smazání účtu se smaže celá tvoje složka (viz níže).</p>
+
+<h2>Sdílené cesty</h2>
+<p>Cestu můžeš sdílet s dalšími lidmi (jako editora nebo čtenáře). Co to znamená:</p>
+<ul>
+<li><strong>Data záměrně sdílené cesty jsou dostupná všem jejím členům:</strong> název, termín, poznámka, seznam destinací a itinerář (včetně letů a zastávek v něm). Editor je může měnit.</li>
+<li>Osobní věci zůstávají osobní: každý člen má vlastní stav checklistu, vlastní zapsané lety, města, výdaje, vzpomínky a fotografie – ty se mezi členy nesdílejí.</li>
+<li><strong>Pozvánka</strong> se vytváří na e-mailovou adresu, kterou zadá vlastník cesty. Adresu vidí jen vlastník a adresát; ostatní členové cesty e-maily ostatních nevidí (seznam členů je anonymní). Pozvaný uvidí u čekající pozvánky název a termín cesty.</li>
+<li><strong>Odkaz ke sdílení</strong> (<code>travelos://share/…</code>) funguje jako klíč: kdo ho má, je přihlášen(a) a připojení potvrdí, připojí se k cestě. Posílej ho jen lidem, kterým věříš. Odkaz lze zrušit; zrušení zavře odkaz, ale <strong>neodebere členy, kteří se už připojili</strong> – ty může vlastník odebrat zvlášť. Člen může cestu kdykoli opustit.</li>
+</ul>
+
+<h2>Analytika a diagnostika</h2>
+<ul>
+<li>Aplikace neobsahuje analytickou, reklamní ani sledovací službu třetí strany a žádný záznam o používání <strong>automaticky neodesílá</strong>.</li>
+<li>V zařízení se vede omezený lokální záznam: až 200 posledních událostí z uzavřeného seznamu (například otevření aplikace, vytvoření cesty, přidání letu, otevření partnerského odkazu; u partnerského odkazu je uveden identifikátor partnera, nikoli adresa) a až 20 posledních chyb (čas, text chyby a první řádek zásobníku volání). Záznam zůstává v zařízení; v Profilu ho můžeš zobrazit a smazat.</li>
+<li><strong>Hlášení problému</strong> (Nastavení → Nahlásit problém) sestavuješ sám(sama): celý text vidíš před odesláním a odešle se přes systémové sdílení, aplikací a příjemcem, které si vybereš. Kategorie a tvůj popis jsou součástí vždy; <strong>technické údaje jsou ve výchozím stavu vypnuté</strong> a přidají se jen po zapnutí přepínače. Pak obsahují: verzi a číslo buildu aplikace, platformu a verzi systému, jazyk, jednotku vzdálenosti, zda jsi přihlášen(a) a zda probíhá synchronizace (ano/ne – bez e-mailu a identifikátoru), počet zaznamenaných událostí a posledních až 20 chyb. Z textu chyb aplikace odstraňuje e-mailové adresy, odkazy, identifikátory, tokeny, cesty k souborům a názvy a poznámky tvých cest. Odstranění je automatické, proto si text před odesláním přečti.</li>
+</ul>
+
+<h2>Technické údaje na straně serveru</h2>
+<p>Serverová funkce pro vyhledání levných letenek má omezení počtu volání. Počítadlo se vede pod identifikátorem přihlášeného účtu, a pokud nejsi přihlášen(a), pod kontrolním součtem (hash) IP adresy; záznamy počítadla se průběžně mažou (starší než dva dny se odstraňují). Funkce neukládá trasy ani dotazy do databáze a neloguje, odkud a kam hledáš. Jako u každého síťového spojení vidí IP adresu a technické údaje požadavku provozovatel infrastruktury (Supabase) a podle svých zásad je může zpracovávat v provozních záznamech; tyto záznamy nejsou pod kontrolou aplikace.</p>
+
+<h2>Externí služby</h2>
+<p>Používáme jen tyto služby. Aplikace žádné z nich nepředává tvoje jméno, e-mail, účet, fotografie ani obsah tvých cest; předává se jen to, co je u služby uvedeno.</p>
+<ul>
+<li><strong>Supabase</strong> (<a href="https://supabase.com/privacy">zásady</a>) – backend aplikace: účet, databáze, úložiště souborů, serverové funkce a upozornění na změnu otevřené sdílené cesty. Zpracovává údaje popsané výše, pokud se přihlásíš. Bez přihlášení se na Supabase neposílají žádná tvoje data; používá se jen k vyhledání letenek.</li>
+<li><strong>ExchangeRate-API</strong> (<code>open.er-api.com</code>, <a href="https://www.exchangerate-api.com/terms">podmínky</a>) – veřejné API kurzů měn. Aplikace nejvýše jednou za 24 hodin stáhne celou tabulku kurzů; požadavek neobsahuje žádné osobní údaje ani údaje o tvých cestách, služba ale jako u každého spojení vidí IP adresu.</li>
+<li><strong>Travelpayouts / Aviasales</strong> – nabídky levných letenek. Dotaz posílá naše serverová funkce (ne tvoje zařízení) a obsahuje odlet a případně cíl (kódy letišť či měst), měsíc, měnu a trh; tvůj účet ani IP adresa se nepředává. Odkaz na nabídku se otevře v prohlížeči na stránkách Aviasales a nese identifikátor partnerského programu provozovatele aplikace.</li>
+<li><strong>Odkazy na partnery</strong> – Airalo, Saily (eSIM), Skyscanner, Google Flights (letenky), Booking.com, Trip.com, Agoda (ubytování), Rentalcars.com, KAYAK (půjčovny aut), Google Maps a Tripadvisor (restaurace). Jde o <strong>odkazy, které se otevřou v prohlížeči</strong>. Do adresy se podle odkazu doplní údaje potřebné k předvyplnění nabídky: cílová destinace nebo město, případně termín cesty a kódy letišť. Aplikace partnerům žádná data jinak nepředává; po otevření stránky platí zásady daného partnera, který vidí i IP adresu a že jsi přišel(a) z odkazu.</li>
+<li><strong>Mapy a úřady</strong> – u města lze otevřít vyhledání v Google Maps nebo Apple Maps (do adresy se doplní název a poloha města) a u destinace odkazy na stránky ministerstev zahraničí. Otevírají se v externí aplikaci nebo prohlížeči.</li>
+<li><strong>Rozpoznání textu z potvrzení rezervace</strong> probíhá v zařízení (knihovna Google ML Kit, vestavěný model); obrázek ani rozpoznaný text aplikace nikam neodesílá.</li>
+</ul>
+<p><strong>Provize.</strong> Odkazy na nabídky letenek z Aviasales jsou partnerské: pokud přes ně něco koupíš, může provozovatel aplikace od partnera získat provizi, bez dopadu na cenu pro tebe. Samotné otevření odkazu provizi nezakládá. Odkazy na ostatní partnery v této verzi partnerský identifikátor nenesou.</p>
+
+<h2>Jak dlouho údaje uchováváme a jak je smazat</h2>
+<ul>
+<li><strong>V zařízení</strong> zůstávají data, dokud je nesmažeš nebo neodinstaluješ aplikaci. Lokální záznam o používání je omezen na posledních 200 událostí a 20 chyb.</li>
+<li><strong>Na serveru</strong> se údaje uchovávají po dobu existence účtu a mažou se jeho smazáním. Další pevnou lhůtu uchovávání nestanovujeme.</li>
+<li><strong>Smazání účtu v aplikaci</strong> (Profil → Smazat účet, s dvojím potvrzením): server smaže účet včetně e-mailové adresy a profil, destinace, města, letiště, lety, checklisty, výdaje, vzpomínky, fotografie v úložišti a pozvánky nesoucí e-mailové adresy; odkazy ke sdílení vytvořené účtem se zruší. <strong>Sdílená cesta se ostatním členům nemaže</strong> – přejde na dalšího člena (tvé osobní věci na ní se smažou); pokud na cestě nikdo další není, smaže se celá. Poté se smažou i lokální data účtu v zařízení. Smazání je nevratné.</li>
+<li><strong>Bez aplikace</strong> viz <a href="../delete-account/">Smazání účtu a dat</a>.</li>
+<li>Smazáním nezmizí kopie, které jsi sám(sama) poslal(a) jinam (například hlášení problému, exportovaný soubor nebo sdílená karta), ani provozní záznamy infrastruktury popsané výše, které nejsou pod kontrolou aplikace.</li>
+</ul>
+
+<h2>Tvoje práva</h2>
+<ul>
+<li><strong>Přístup a kopie.</strong> Svá data vidíš v aplikaci a můžeš je exportovat do souboru (Nastavení → Data; bez fotografií). Kopii údajů uložených na serveru nebo další informace o zpracování si můžeš vyžádat e-mailem na <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a> z adresy účtu.</li>
+<li><strong>Oprava.</strong> Údaje upravíš přímo v aplikaci; po přihlášení se změna přenese i na server.</li>
+<li><strong>Výmaz.</strong> Jednotlivé záznamy smažeš v aplikaci, celý účet viz výše.</li>
+<li><strong>Námitka, omezení zpracování a přenositelnost</strong> a další práva podle platných předpisů uplatníš e-mailem na uvedené adrese.</li>
+<li>Totožnost ověřujeme odpovědí a potvrzením z e-mailové adresy účtu; bez něj údaje nevydáváme ani nemažeme.</li>
+<li>Máš právo podat stížnost u dozorového úřadu pro ochranu osobních údajů ve svém státě; v České republice je to <a href="https://uoou.gov.cz/">Úřad pro ochranu osobních údajů</a>.</li>
+</ul>
+<div class="todo"><strong>[DOPLNIT: právní základ a lhůty]</strong> Právní základ jednotlivých zpracování (čl. 6 GDPR) a lhůta pro vyřízení žádostí, kterou provozovatel skutečně dodrží.</div>
 
 <h2>Tento web</h2>
-<p>Web je statická stránka na GitHub Pages. Nepoužívá cookies, analytiku ani sledovací skripty a nenačítá nic z cizích serverů. Hostitel (GitHub) může podle svých zásad zpracovávat technické údaje o návštěvě.</p>
+<p>Web je statická stránka na GitHub Pages. Nepoužívá cookies, analytiku ani sledovací skripty a nenačítá nic z cizích serverů. Hostitel (GitHub) může podle svých zásad zpracovávat technické údaje o návštěvě, například IP adresu.</p>
 
-<h2>Aplikace Travel OS</h2>
-<p>Aplikace je offline-first: data (cesty, navštívené destinace, lety, checklisty, nastavení) se ukládají v zařízení a bez účtu neopouštějí telefon.</p>
-<ul>
-<li><strong>Volitelný účet a synchronizace.</strong> Po přihlášení se data zálohují do služby Supabase. Účet je potřeba jen pro zálohu, sdílení cest a synchronizaci mezi zařízeními.</li>
-<li><strong>Smazání účtu.</strong> Účet i data na serveru lze smazat přímo v aplikaci (Profil → Smazat účet) nebo bez aplikace žádostí e-mailem – viz <a href="../delete-account/">Smazání účtu a dat</a>.</li>
-<li><strong>Sdílené cesty.</strong> Data sdílené cesty vidí jen její členové; pozvánka se vytváří na e-mailovou adresu, kterou zadá vlastník cesty.</li>
-<li><strong>Kurzy měn.</strong> Aplikace nejvýše jednou za 24 hodin stáhne kurzy měn z veřejného zdroje; neposílá k tomu osobní údaje.</li>
-<li><strong>Partnerské odkazy.</strong> Odkazy na nabídky partnerů se otevřou v prohlížeči; na jejich stránkách platí zásady daného partnera.</li>
-</ul>
-<div class="todo">TODO: ověřit a doplnit — přesný výčet ukládaných údajů na serveru, ukládání fotografií ke vzpomínkám, doba uchování, použití analytiky v nasazené verzi, oprávnění aplikace.</div>
-
-<h2>Správce a kontakt</h2>
-<div class="todo">TODO: doplnit jméno správce údajů a kontaktní adresu. Do té doby lze použít <a href="https://github.com/Ludvap/travel-os-site/issues">GitHub Issues</a>.</div>
-
-<h2>Práva uživatele</h2>
-<div class="todo">TODO: doplnit práva subjektu údajů (přístup, oprava, výmaz, přenositelnost) a způsob jejich uplatnění.</div>
-
-<p class="note">Poslední úprava konceptu: 2026-10-01.</p>
+<h2>Změny</h2>
+<p>Při změně zpracování tyto zásady upravíme a uvedeme datum poslední úpravy výše. Aplikace na tuto stránku odkazuje z Nastavení → Zásady ochrany soukromí.</p>
 </div></main>
-<footer><div class="wrap"><a href="../">Zpět na úvod</a></div></footer>
+<footer><div class="wrap"><a href="../">Zpět na úvod</a><a href="../delete-account/">Smazání účtu</a></div></footer>
 </body>
 </html>
