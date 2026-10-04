@@ -6,7 +6,7 @@ Samostatný projekt – neobsahuje kód aplikace ani submodul.
 
 ## Struktura
 - `index.html` – landing page
-- `privacy/index.html` – zásady ochrany soukromí (dvě pole [DOPLNIT]: správce údajů, právní základ a lhůty)
+- `privacy/index.html` – zásady ochrany soukromí (správce Ludvík Peikert; dvě položky [PRÁVNĚ OVĚŘIT])
 - `assets/` – CSS, ikona aplikace, písmo Nunito Sans (SIL OFL, viz `assets/OFL.txt`)
 
 ## Lokálně
@@ -22,5 +22,5 @@ Workflow nepoužíváme: deploy z větve je nejjednodušší a nic navíc nevyž
 
 ## Před vydáním aplikace
 - doplnit odkazy na Google Play / App Store,
-- doplnit v `/privacy` pole [DOPLNIT] (správce údajů, právní základ a lhůty),
+- nechat právně ověřit položky [PRÁVNĚ OVĚŘIT] v `/privacy` (základ pro e-mail pozvaného, předávání mimo EU/EEA),
 - případně vlastní doména (soubor `CNAME`).

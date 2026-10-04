@@ -11,11 +11,12 @@
 <header class="top"><div class="wrap"><a class="brand" href="../"><img src="../assets/icon-192.png" alt="" width="36" height="36">Travel OS</a></div></header>
 <main><div class="doc" style="margin:0 auto">
 <h1>Zásady ochrany soukromí</h1>
-<p class="note">Platí pro mobilní aplikaci Travel OS (Android a iOS) a pro tento web. Poslední úprava: 2026-10-04.</p>
+<p class="note">Platí pro mobilní aplikaci Travel OS (Android a iOS) a pro tento web. Poslední úprava: 2026-10-05.</p>
 
-<h2>Správce údajů a kontakt</h2>
-<div class="todo"><strong>[DOPLNIT: správce údajů]</strong> Jméno nebo obchodní firma, adresa sídla / bydliště a případně IČO správce údajů.</div>
-<p>Dotazy k ochraně soukromí, žádosti o informace a o smazání údajů: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a>.</p>
+<h2>Správce osobních údajů</h2>
+<p><strong>Ludvík Peikert</strong> (fyzická osoba; Travel OS není provozován prostřednictvím firmy)<br>
+E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a></p>
+<p>Na tuto adresu směřují dotazy k ochraně soukromí, žádosti o informace a žádosti o smazání údajů.</p>
 <p>Do e-mailu nepiš heslo ani jiné přihlašovací údaje – nikdy je nepotřebujeme. Žádosti neposílej veřejně (například přes GitHub Issues), prozradily by tvůj e-mail.</p>
 
 <h2>Stručně</h2>
@@ -90,25 +91,46 @@
 </ul>
 <p><strong>Provize.</strong> Odkazy na nabídky letenek z Aviasales jsou partnerské: pokud přes ně něco koupíš, může provozovatel aplikace od partnera získat provizi, bez dopadu na cenu pro tebe. Samotné otevření odkazu provizi nezakládá. Odkazy na ostatní partnery v této verzi partnerský identifikátor nenesou.</p>
 
+<h2>Právní základy zpracování</h2>
+<p>Údaje, které zůstávají jen v tvém zařízení (viz výše), na našich serverech nezpracováváme a nemáme k nim přístup. Údaje zpracovávané na serveru zpracováváme na těchto základech podle nařízení GDPR:</p>
+<ul>
+<li><strong>Plnění smlouvy</strong> (čl. 6 odst. 1 písm. b): účet a přihlášení, záloha a synchronizace tvých dat, ukládání cest, itinerářů, seznamů, letů, checklistů, výdajů, vzpomínek a fotografií, sdílení cest s členy, které určíš, a vyhledání letenek. Bez těchto údajů nelze službu, kterou sis zvolil(a), poskytovat.</li>
+<li><strong>Oprávněný zájem</strong> (čl. 6 odst. 1 písm. f): <em>zabezpečení služby a ochrana před zneužitím</em> – omezení počtu volání serverové funkce (počítadlo pod identifikátorem účtu nebo hashem IP adresy), aby jeden volající nevyčerpal limity služby a nevznikaly zbytečné náklady; <em>řešení technických chyb</em> – odpověď na hlášení problému, které jsi nám sám(sama) poslal(a).</li>
+<li><strong>Souhlas</strong> (čl. 6 odst. 1 písm. a): jen u <em>technických údajů v hlášení problému</em>. Ve výchozím stavu jsou vypnuté a přidají se, jen když přepínač sám zapneš a hlášení odešleš. Souhlas odvoláš tím, že přepínač nezapneš; už odeslané hlášení lze smazat na žádost e-mailem.</li>
+<li><strong>Právní povinnost</strong> (čl. 6 odst. 1 písm. c): jen vyřízení tvých žádostí podle GDPR (ověření totožnosti a odpověď). Žádné účetní ani daňové údaje o uživatelích nezpracováváme.</li>
+</ul>
+<div class="todo"><strong>[PRÁVNĚ OVĚŘIT]</strong> Právní základ pro e-mailovou adresu pozvaného člověka, kterou do pozvánky zadá vlastník cesty (pozvaný o tom v tu chvíli neví). Zpracování slouží k doručení pozvánky na žádost vlastníka; konkrétní základ (pravděpodobně oprávněný zájem) vyžaduje právní posouzení.</div>
+
 <h2>Jak dlouho údaje uchováváme a jak je smazat</h2>
 <ul>
-<li><strong>V zařízení</strong> zůstávají data, dokud je nesmažeš nebo neodinstaluješ aplikaci. Lokální záznam o používání je omezen na posledních 200 událostí a 20 chyb.</li>
-<li><strong>Na serveru</strong> se údaje uchovávají po dobu existence účtu a mažou se jeho smazáním. Další pevnou lhůtu uchovávání nestanovujeme.</li>
+<li><strong>V zařízení</strong> zůstávají data, dokud je nesmažeš nebo neodinstaluješ aplikaci. Mezipaměť kurzů se obnovuje nejvýše jednou za 24 hodin. Lokální záznam o používání je omezen na posledních 200 událostí a 20 chyb (starší se přepisují).</li>
+<li><strong>Účet a obsah na serveru</strong> (profil, cesty, seznamy, lety, checklisty, výdaje, vzpomínky, fotografie, členství): po dobu existence účtu; mažou se smazáním účtu podle postupu níže. Další pevnou lhůtu nestanovujeme.</li>
+<li><strong>Pozvánky a odkazy ke sdílení:</strong> pozvánka (včetně e-mailové adresy) existuje, dokud ji nevyřídí adresát nebo vlastník, nebo dokud se nesmaže účet; konkrétní lhůtu pro automatické smazání vyřízených pozvánek nestanovujeme.</li>
+<li><strong>Počítadlo limitu volání</strong> (identifikátor účtu nebo hash IP adresy a počet volání): záznamy starší než dva dny se průběžně odstraňují.</li>
+<li><strong>Provozní záznamy infrastruktury</strong> (Supabase, GitHub Pages): jejich uchování řídí poskytovatelé podle svých zásad; konkrétní dobu neznáme.</li>
+<li><strong>Hlášení problému</strong>, které nám odešleš, zůstává v poště správce; pevnou lhůtu uchování nestanovujeme.</li>
 <li><strong>Smazání účtu v aplikaci</strong> (Profil → Smazat účet, s dvojím potvrzením): server smaže účet včetně e-mailové adresy a profil, destinace, města, letiště, lety, checklisty, výdaje, vzpomínky, fotografie v úložišti a pozvánky nesoucí e-mailové adresy; odkazy ke sdílení vytvořené účtem se zruší. <strong>Sdílená cesta se ostatním členům nemaže</strong> – přejde na dalšího člena (tvé osobní věci na ní se smažou); pokud na cestě nikdo další není, smaže se celá. Poté se smažou i lokální data účtu v zařízení. Smazání je nevratné.</li>
 <li><strong>Bez aplikace</strong> viz <a href="../delete-account/">Smazání účtu a dat</a>.</li>
 <li>Smazáním nezmizí kopie, které jsi sám(sama) poslal(a) jinam (například hlášení problému, exportovaný soubor nebo sdílená karta), ani provozní záznamy infrastruktury popsané výše, které nejsou pod kontrolou aplikace.</li>
 </ul>
 
 <h2>Tvoje práva</h2>
+<p>Podle GDPR máš u údajů, které zpracováváme na serveru, tato práva. Uplatníš je e-mailem na <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a>; nemáme žádný online portál, formulář ani telefonní linku.</p>
 <ul>
-<li><strong>Přístup a kopie.</strong> Svá data vidíš v aplikaci a můžeš je exportovat do souboru (Nastavení → Data; bez fotografií). Kopii údajů uložených na serveru nebo další informace o zpracování si můžeš vyžádat e-mailem na <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</a> z adresy účtu.</li>
+<li><strong>Přístup a kopie.</strong> Svá data vidíš v aplikaci a můžeš je exportovat do souboru (Nastavení → Data; bez fotografií). O potvrzení, zda údaje zpracováváme, a o kopii údajů uložených na serveru požádej e-mailem z adresy spojené s účtem, abychom mohli ověřit totožnost. Kopii připravujeme ručně, žádný automatický export na požádání neexistuje.</li>
 <li><strong>Oprava.</strong> Údaje upravíš přímo v aplikaci; po přihlášení se změna přenese i na server.</li>
-<li><strong>Výmaz.</strong> Jednotlivé záznamy smažeš v aplikaci, celý účet viz výše.</li>
-<li><strong>Námitka, omezení zpracování a přenositelnost</strong> a další práva podle platných předpisů uplatníš e-mailem na uvedené adrese.</li>
-<li>Totožnost ověřujeme odpovědí a potvrzením z e-mailové adresy účtu; bez něj údaje nevydáváme ani nemažeme.</li>
-<li>Máš právo podat stížnost u dozorového úřadu pro ochranu osobních údajů ve svém státě; v České republice je to <a href="https://uoou.gov.cz/">Úřad pro ochranu osobních údajů</a>.</li>
+<li><strong>Výmaz.</strong> Jednotlivé záznamy smažeš v aplikaci, celý účet a data na serveru smažeš v aplikaci nebo bez ní podle <a href="../delete-account/">Smazání účtu a dat</a>.</li>
+<li><strong>Omezení zpracování a přenositelnost.</strong> Uplatníš e-mailem. Přenositelnost se týká údajů, které zpracováváme na základě smlouvy; vydáme je ve strukturovaném, běžně používaném formátu.</li>
+<li><strong>Námitka.</strong> Proti zpracování založenému na oprávněném zájmu (zabezpečení služby, řešení chyb) můžeš kdykoli vznést námitku.</li>
+<li><strong>Odvolání souhlasu.</strong> Týká se jen technických údajů v hlášení problému (viz výše); odvoláním není dotčena zákonnost zpracování před ním.</li>
+<li><strong>Stížnost.</strong> Můžeš podat stížnost u dozorového úřadu pro ochranu osobních údajů, zejména v zemi svého bydliště nebo práce; v České republice je to <a href="https://uoou.gov.cz/">Úřad pro ochranu osobních údajů</a>.</li>
 </ul>
-<div class="todo"><strong>[DOPLNIT: právní základ a lhůty]</strong> Právní základ jednotlivých zpracování (čl. 6 GDPR) a lhůta pro vyřízení žádostí, kterou provozovatel skutečně dodrží.</div>
+<p><strong>Ověření totožnosti.</strong> Žádost posílej z e-mailové adresy účtu. Bez potvrzení z této adresy údaje nevydáváme ani nemažeme; znalost cizí e-mailové adresy nestačí.</p>
+<p><strong>Lhůta.</strong> Na žádosti reagujeme bez zbytečného odkladu a nejpozději do jednoho měsíce od obdržení žádosti. Pokud je to s ohledem na složitost a počet žádostí nutné, může být tato lhůta podle GDPR prodloužena o další dva měsíce; o prodloužení a jeho důvodech tě do jednoho měsíce informujeme.</p>
+
+<h2>Předávání údajů mimo EU/EEA</h2>
+<p>Databáze, ověřování účtů a úložiště fotografií našeho projektu u služby Supabase jsou provozovány v regionu <code>eu-north-1</code> (Stockholm).</p>
+<div class="todo"><strong>[PRÁVNĚ OVĚŘIT]</strong> Zda a na jakém základě dochází k předávání údajů mimo EU/EEA – jde o poskytovatele Supabase (a jeho dodavatele, serverové funkce běží na jeho okrajové infrastruktuře), o hostitele tohoto webu GitHub Pages a o služby ExchangeRate-API a Travelpayouts. Zemi zpracování, případné rozhodnutí o odpovídající ochraně ani smluvní mechanismus (např. standardní smluvní doložky) zde neuvádíme, protože je neumíme z dostupných podkladů doložit.</div>
 
 <h2>Tento web</h2>
 <p>Web je statická stránka na GitHub Pages. Nepoužívá cookies, analytiku ani sledovací skripty a nenačítá nic z cizích serverů. Hostitel (GitHub) může podle svých zásad zpracovávat technické údaje o návštěvě, například IP adresu.</p>
