@@ -23,7 +23,7 @@ E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</
 <ul>
 <li>Aplikace funguje celá <strong>bez účtu</strong>. Bez účtu jsou tvoje data uložena v telefonu a nejsou ukládána na serveru.</li>
 <li><strong>S účtem</strong> se data zálohují na server (služba Supabase) a lze je sdílet mezi zařízeními a s lidmi, které na cestu pozveš.</li>
-<li>Aplikace v současné verzi neobsahuje analytickou ani reklamní službu třetí strany. Záznamy o používání a chybách zůstávají v telefonu a odešlou se jen v hlášení problému, které sám sestavíš a odešleš.</li>
+<li>Aplikace v současné verzi neobsahuje reklamní ani sledovací službu třetí strany. Vlastní záznamy o používání a chybách zůstávají v telefonu a odešlou se jen v hlášení problému, které sám sestavíš a odešleš. Knihovna Google ML Kit pro rozpoznání textu může Googlu odesílat technické údaje pro diagnostiku (viz „Analytika a diagnostika").</li>
 <li>Účet a data na serveru můžeš smazat v aplikaci.</li>
 </ul>
 
@@ -82,7 +82,7 @@ E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</
 
 <h2>Analytika a diagnostika</h2>
 <ul>
-<li>Aplikace v současné verzi neobsahuje analytickou, reklamní ani sledovací službu třetí strany a lokální záznam o používání <strong>sama neodesílá</strong>.</li>
+<li>Aplikace v současné verzi neobsahuje reklamní ani sledovací službu třetí strany a lokální záznam o používání <strong>sama neodesílá</strong>. Výjimkou jsou technické údaje knihovny Google ML Kit popsané v části „Externí služby".</li>
 <li>V zařízení se vede omezený lokální záznam: až 200 posledních událostí z uzavřeného seznamu (například otevření aplikace, vytvoření cesty, přidání letu, otevření partnerského odkazu; u partnerského odkazu je uveden identifikátor partnera, nikoli adresa) a až 20 posledních chyb (čas, text chyby a první řádek zásobníku volání). Záznam zůstává v zařízení; v Profilu ho můžeš zobrazit a smazat.</li>
 <li><strong>Hlášení problému</strong> (Nastavení → Nahlásit problém) sestavuješ sám(sama): celý text vidíš před odesláním a odešle se přes systémové sdílení, aplikací a příjemcem, které si vybereš. Kategorie a tvůj popis jsou součástí vždy; <strong>technické údaje jsou ve výchozím stavu vypnuté</strong> a přidají se jen po zapnutí přepínače. Pak obsahují: verzi a číslo buildu aplikace, platformu a verzi systému, jazyk, jednotku vzdálenosti, zda jsi přihlášen(a) a zda probíhá synchronizace (ano/ne – bez e-mailu a identifikátoru), počet zaznamenaných událostí a posledních až 20 chyb. Aplikace se z textu chyb pokouší odstranit e-mailové adresy, odkazy, identifikátory, tokeny, cesty k souborům a názvy a poznámky tvých cest; odstranění je automatické a nelze ho zaručit, proto si text před odesláním přečti.</li>
 </ul>
@@ -99,7 +99,7 @@ E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</
 <li><strong>Travelpayouts / Aviasales</strong> – nabídky levných letenek. Dotaz posílá naše serverová funkce (ne tvoje zařízení) a obsahuje odlet a případně cíl (kódy letišť či měst), měsíc, měnu a trh; tvůj účet ani IP adresu serverová funkce nepředává. Odkaz na nabídku se otevře v prohlížeči na stránkách Aviasales a může nést identifikátor partnerského programu provozovatele aplikace.</li>
 <li><strong>Odkazy na partnery</strong> – Airalo, Saily (eSIM), Skyscanner, Google Flights (letenky), Booking.com, Trip.com, Agoda (ubytování), Rentalcars.com, KAYAK (půjčovny aut), Google Maps a Tripadvisor (restaurace). Jde o <strong>odkazy, které se otevřou v prohlížeči</strong>. Do adresy se podle odkazu doplní údaje potřebné k předvyplnění nabídky: cílová destinace nebo město, případně termín cesty a kódy letišť. Jde o otevření externí stránky; aplikace partnerům nepředává osobní údaje. Po otevření stránky platí zásady daného partnera.</li>
 <li><strong>Mapy a úřady</strong> – u města lze otevřít vyhledání v Google Maps nebo Apple Maps (do adresy se doplní název a poloha města) a u destinace odkazy na stránky ministerstev zahraničí. Otevírají se v externí aplikaci nebo prohlížeči.</li>
-<li><strong>Rozpoznání textu z potvrzení rezervace</strong> probíhá v zařízení (knihovna Google ML Kit, vestavěný model); aplikace obrázek ani rozpoznaný text sama neodesílá.</li>
+<li><strong>Rozpoznání textu z potvrzení rezervace</strong> probíhá v zařízení pomocí knihovny Google ML Kit a vestavěného modelu. Aplikace obrázek ani rozpoznaný text sama neodesílá. ML Kit spolu s podpůrnou službou Google Data Transport může Googlu odesílat technické údaje pro diagnostiku a statistiky používání knihovny, například informace o zařízení, identifikátor a verzi aplikace, identifikátor instalace, výkonnostní metriky, konfiguraci volání knihovny, typy událostí a kódy chyb. Aplikace knihovně nepředává jméno, e-mail ani identifikátor účtu a provozovatel aplikace tyto údaje nepoužívá k reklamě ani sledování. Obrázky a rozpoznaný text nejsou mezi údaji, které Google v aktuálním <a href="https://developers.google.com/ml-kit/ios-data-disclosure">přehledu</a> pro ML Kit na iOS uvádí.</li>
 </ul>
 <p><strong>Provize.</strong> Odkazy na nabídky letenek z Aviasales mohou být partnerské: pokud přes ně něco koupíš, může provozovatel aplikace od partnera získat provizi, bez dopadu na cenu pro tebe. Samotné otevření odkazu provizi nezakládá.</p>
 
