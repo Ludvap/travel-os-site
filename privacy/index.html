@@ -11,7 +11,7 @@
 <header class="top"><div class="wrap"><a class="brand" href="../"><img src="../assets/icon-192.png" alt="" width="36" height="36">Travel OS</a></div></header>
 <main><div class="doc" style="margin:0 auto">
 <h1>Zásady ochrany soukromí</h1>
-<p class="note">Platí pro mobilní aplikaci Travel OS (Android a iOS) a pro tento web. Poslední úprava: 2026-10-06.</p>
+<p class="note">Platí pro mobilní aplikaci Travel OS (Android a iOS) a pro tento web. Poslední úprava: 2026-10-05.</p>
 
 <h2>Správce osobních údajů</h2>
 <p><strong>Ludvík Peikert</strong> (fyzická osoba; Travel OS není provozován prostřednictvím firmy)<br>
@@ -91,9 +91,10 @@ E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</
 <p>Serverová funkce pro vyhledání levných letenek má omezení počtu volání. Počítadlo se vede pod identifikátorem přihlášeného účtu, a pokud nejsi přihlášen(a), pod kontrolním součtem (hash) IP adresy; podle současné implementace se záznamy počítadla starší než dva dny odstraňují. Funkce nezapisuje trasy ani dotazy do databáze. Jako u každého síťového spojení může IP adresu a technické údaje požadavku zpracovávat provozovatel infrastruktury (Supabase) podle svých zásad; tyto záznamy nejsou pod kontrolou aplikace.</p>
 
 <h2>Externí služby</h2>
-<p>V současné verzi aplikace používá tyto služby. Žádné z nich, kromě Supabase po tvém přihlášení, aplikace nepředává tvoje jméno, e-mail, účet, fotografie ani obsah tvých cest; předává se jen to, co je u služby uvedeno.</p>
+<p>V současné verzi aplikace používá tyto služby. Žádné z nich, kromě Supabase po tvém přihlášení, aplikace nepředává tvoje jméno, e-mail, účet, fotografie ani obsah tvých cest; předává se jen to, co je u služby uvedeno. Výjimkou je e-mailová adresa při odesílání autentizačních e-mailů, kterou Supabase předává Googlu (viz níže).</p>
 <ul>
 <li><strong>Supabase</strong> (<a href="https://supabase.com/privacy">zásady</a>) – backend aplikace: účet, databáze, úložiště souborů, serverové funkce a upozornění na změnu otevřené sdílené cesty. Zpracovává údaje popsané výše, pokud se přihlásíš. Bez přihlášení aplikace Supabase využívá k vyhledání letenek.</li>
+<li><strong>Google (Gmail SMTP)</strong> (<a href="https://policies.google.com/privacy">zásady</a>) – doručení transakčních autentizačních e-mailů. Tyto e-maily (potvrzení registrace a reset hesla) vytváří Supabase Auth a odesílá je přes SMTP server Gmailu (<code>smtp.gmail.com</code>) z e-mailové adresy projektu. Při odeslání je zpracovávána zejména e-mailová adresa příjemce a text příslušné zprávy včetně jednorázového odkazu, případně technické údaje zprávy. Služba se používá výhradně k doručení těchto dvou typů e-mailů.</li>
 <li><strong>ExchangeRate-API</strong> (<code>open.er-api.com</code>, <a href="https://www.exchangerate-api.com/terms">podmínky</a>) – veřejné API kurzů měn. Aplikace stahuje celou tabulku kurzů; požadavek neobsahuje osobní údaje ani údaje o tvých cestách. Jde o technický požadavek, při němž služba jako u každého spojení může vidět IP adresu zařízení.</li>
 <li><strong>Travelpayouts / Aviasales</strong> – nabídky levných letenek. Dotaz posílá naše serverová funkce (ne tvoje zařízení) a obsahuje odlet a případně cíl (kódy letišť či měst), měsíc, měnu a trh; tvůj účet ani IP adresu serverová funkce nepředává. Odkaz na nabídku se otevře v prohlížeči na stránkách Aviasales a může nést identifikátor partnerského programu provozovatele aplikace.</li>
 <li><strong>Odkazy na partnery</strong> – Airalo, Saily (eSIM), Skyscanner, Google Flights (letenky), Booking.com, Trip.com, Agoda (ubytování), Rentalcars.com, KAYAK (půjčovny aut), Google Maps a Tripadvisor (restaurace). Jde o <strong>odkazy, které se otevřou v prohlížeči</strong>. Do adresy se podle odkazu doplní údaje potřebné k předvyplnění nabídky: cílová destinace nebo město, případně termín cesty a kódy letišť. Jde o otevření externí stránky; aplikace partnerům nepředává osobní údaje. Po otevření stránky platí zásady daného partnera.</li>
@@ -140,6 +141,7 @@ E-mail: <a href="mailto:travelos.privacy@gmail.com">travelos.privacy@gmail.com</
 
 <h2>Mezinárodní předávání údajů</h2>
 <p>Databáze, ověřování účtů a úložiště souborů našeho projektu u služby Supabase jsou provozovány v regionu <code>eu-north-1</code> (Stockholm). Podle zpracovatelského dodatku (DPA) poskytovatele jsou data ve zvoleném regionu ukládána a primárně zpracovávána; poskytovatel je může zpracovávat i v místech, kde on nebo jeho subdodavatelé mají zařízení, a pro předávání údajů mimo EHP dodatek odkazuje na standardní smluvní doložky. Znění: <a href="https://supabase.com/legal/dpa">supabase.com/legal/dpa</a>.</p>
+<p>Google ve svých zásadách uvádí, že provozuje servery po celém světě a že informace mohou být zpracovávány na serverech mimo zemi, kde uživatel žije. To se může týkat i autentizačních e-mailů odesílaných přes Gmail SMTP.</p>
 
 <h2>Tento web</h2>
 <p>Web je statická stránka na GitHub Pages. Nepoužívá cookies, analytiku ani sledovací skripty a nenačítá nic z cizích serverů. Při zobrazení stránky může provozovatel hostingu zpracovávat technické údaje podle vlastních zásad.</p>
